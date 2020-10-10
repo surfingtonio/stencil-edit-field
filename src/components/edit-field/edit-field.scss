@@ -1,0 +1,98 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+$web-island-health-blue: #006eb4;
+$web-dark-blue-accent: #00305a;
+$web-blue-accent: #00a0fc;
+$web-vibrant-orange: #f35607;
+$web-dark-grey: #333;
+$web-medium-dark-grey: #555;
+$web-medium-grey: #999;
+$web-light-grey: #eee;
+$web-calming-grey: #f9f9fd;
+$web-white: #fff;
+
+.edit-field {
+    align-items: center;
+    display: flex;
+    font-family: Lato, "Scala Sans", sans-serif;
+    position: relative;
+
+    .field {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+
+        .icon {
+            display: none;
+        }
+
+        .btn-edit {
+            visibility: hidden;
+        }
+        
+        &:hover .btn-edit {
+            visibility: visible;
+        }
+    }
+
+    .btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        margin: .125rem;
+        padding: 0;
+    }
+
+    .btn-edit:not([disabled]):hover {
+        color: $web-vibrant-orange;
+    }
+
+    .fa-exclamation-circle {
+        color: #f00;
+    }
+
+    .fa-check-circle {
+        color: #0a0;
+    }
+
+    form {
+        background: $web-white;
+        border: 1px solid #aaa;
+        border-radius: .25rem;
+        box-shadow: 1px 1px 5px $web-medium-grey;
+        display: none;
+        left: -1.12rem;
+        padding: .5rem .5rem .5rem .25rem;
+        position: absolute;
+        top: -.55rem;
+        z-index: 1;
+        
+        .content {
+            align-items: center;
+            display: flex;
+        }
+
+        select {
+            margin: 0 .5rem;
+            font-size: 14.4px;   
+
+            option {
+                font-size: 14.4px;   
+            }
+        }
+
+        .btn-submit:not([disabled]):hover {
+            color: #0a0;
+        }
+        
+        .btn-cancel:not([disabled]):hover {
+            color: #f00;
+        }
+
+        .fa-circle-notch {
+            color: $web-island-health-blue;
+            display: none;
+        }
+    }
+}

@@ -12,6 +12,7 @@
   <script type="module" src="/build/app.esm.js"></script>
   <script nomodule src="/build/app.js"></script>
   <link href="/build/app.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/fontawesome-free/css/all.css">
 
   <link rel="apple-touch-icon" href="/assets/icon/icon.png">
   <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
@@ -19,7 +20,31 @@
 </head>
 <body>
 
-  <app-root></app-root>
+  <!-- <button>Open</button> -->
 
+  <edit-field action="http://localhost">Draft</edit-field>
+
+  <script>
+    let btn = document.querySelector('button');
+    let field = document.querySelector('edit-field');
+
+    // btn.addEventListener('click', () => {
+    //   field.open();
+    // })
+
+    field.options = [
+      { value: 'Finalized', label: 'Finalized' },
+      { value: 'ReviewApproved', label: 'Review Approved' },
+      { value: 'UnderReview', label: 'Under Review' },
+      { value: 'Draft', label: 'Draft' }
+    ]
+
+    field.addEventListener('open', () => { console.log('Event: open'); });
+    field.addEventListener('close', () => { console.log('Event: close'); });
+    field.addEventListener('cancel', () => { console.log('Event: cancel'); });
+    field.addEventListener('change', (ev) => { console.log(`Event: change, Value: ${field.value}, Selected: ${ev.detail}`); });
+    field.addEventListener('submit', () => { console.log('Event: submit'); });
+    field.addEventListener('update', () => { console.log('Event: update'); });
+  </script>
 </body>
 </html>

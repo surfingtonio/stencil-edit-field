@@ -5,62 +5,49 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
+import { EditFieldOption } from "./components/edit-field/edit-field-option";
 export namespace Components {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match": MatchResults;
-    }
-    interface AppRoot {
+    interface EditField {
+        "action": string;
+        "close": () => Promise<void>;
+        "open": () => Promise<void>;
+        "options": Array<EditFieldOption>;
+        "save": () => Promise<void>;
+        "value": string;
     }
 }
 declare global {
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
+    interface HTMLEditFieldElement extends Components.EditField, HTMLStencilElement {
     }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
-    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
-    }
-    var HTMLAppRootElement: {
-        prototype: HTMLAppRootElement;
-        new (): HTMLAppRootElement;
+    var HTMLEditFieldElement: {
+        prototype: HTMLEditFieldElement;
+        new (): HTMLEditFieldElement;
     };
     interface HTMLElementTagNameMap {
-        "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
-        "app-root": HTMLAppRootElement;
+        "edit-field": HTMLEditFieldElement;
     }
 }
 declare namespace LocalJSX {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
-    interface AppRoot {
+    interface EditField {
+        "action"?: string;
+        "onCancel"?: (event: CustomEvent<any>) => void;
+        "onChange"?: (event: CustomEvent<any>) => void;
+        "onClose"?: (event: CustomEvent<any>) => void;
+        "onOpen"?: (event: CustomEvent<any>) => void;
+        "onSubmit"?: (event: CustomEvent<string>) => void;
+        "onUpdate"?: (event: CustomEvent<string>) => void;
+        "options"?: Array<EditFieldOption>;
+        "value"?: string;
     }
     interface IntrinsicElements {
-        "app-home": AppHome;
-        "app-profile": AppProfile;
-        "app-root": AppRoot;
+        "edit-field": EditField;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
-            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "edit-field": LocalJSX.EditField & JSXBase.HTMLAttributes<HTMLEditFieldElement>;
         }
     }
 }
